@@ -1,0 +1,202 @@
+#forms-container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    /* border:2px solid red; */
+    overflow-y: auto;
+}
+#forms-container .logo{
+    position: absolute;
+    top: 2px;
+    z-index: 1;
+}
+#forms-container .form-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 45rem;
+    height: fit-content;
+    padding: 0 5rem 5rem 5rem;
+    padding-top: 8rem;
+    margin-bottom: 10rem;
+    top: 8rem;
+    /* border:2px solid red; */
+    background-color: var(--web-forms-container);
+    border-radius: 25px;
+}
+#forms-container form{
+    position:relative;
+    width: 100%;
+    height: 100%;
+}
+.form-box .title{
+    color: var(--font-color-secondary);
+    font-size: 35pt;
+    text-align: center;
+    font-family: Monstriffic;
+}
+.form-box .description{
+    color: var(--font-color-tertiary);
+    font-size: 13pt;
+    text-align: justify;
+}
+
+.form-box label{
+    margin-top: 1rem;
+    color: var(--font-color-tertiary);
+    font-size: 13pt;
+}
+.form-box input{
+    padding: 0.5rem;
+    width: 100%;
+    border-radius: 10px;
+}
+
+.checkbox:before {
+    position: relative;
+    display: block;
+    width: 2rem !important;
+    height: 2rem !important;
+    border: 1px solid var(--Monstronauts-primary);
+    content: "";
+    background: var(--Monstronauts-secondary);
+}
+.checkbox:after {
+    position: relative;
+    display: block;
+    left: 0px;
+    top: -2rem;
+    width: 2rem !important;
+    height: 2rem !important;
+    border-width: 1px;
+    border-style: solid;
+    border-color: var(--Monstronauts-primary);
+    content: "";
+    /* background-image: linear-gradient(135deg, #B1B6BE 0%, #FFF 100%); */
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.checkbox:checked:after {
+    background-image: url(../../forms/images/ppr_web_check.png);
+}
+
+.checkbox{
+    display: inline-block;
+    width: 2rem !important;
+    height: 2rem !important;
+}
+
+#checkImage{
+    position: absolute;
+}
+.birth .form-box .input-group{
+    width: 50%;
+}
+.input-group .form-select{
+    background-image: url(../../forms/images/ppr_web_dropdown.png);
+}
+.form-box .Birth{
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+.form-box .agreement{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.form-box .agreement .description{
+    width: 90%;
+    color: var(--font-color-primary);
+    font-size: 10pt;
+}
+.form-box .notes{
+    display: inline-block;
+    text-align: justify;
+    font-size: 10pt;
+    color: var(--font-color-tertiary);
+}
+.button-container{
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+#submitBtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    user-select: none;
+    width: 60%;
+}
+#submitBtn .btnImg{
+    position: relative;
+    width: 100%;
+}
+#submitBtn .btnText{
+    position: absolute;
+    font-size: 25pt;
+    color: var(--font-color-primary);
+    font-family: Monstriffic;
+    text-shadow:
+        var(--font-outline) 2px 0px 0px, 
+        var(--font-outline) 1.75517px 0.958851px 0px, 
+        var(--font-outline) 1.0806px 1.68294px 0px, 
+        var(--font-outline) 0.141474px 1.99499px 0px, 
+        var(--font-outline) -0.832294px 1.81859px 0px, 
+        var(--font-outline) -1.60229px 1.19694px 0px, 
+        var(--font-outline) -1.97998px 0.28224px 0px, 
+        var(--font-outline) -1.87291px -0.701566px 0px, 
+        var(--font-outline) -1.30729px -1.5136px 0px, 
+        var(--font-outline) -0.421592px -1.95506px 0px,
+        var(--font-outline) 0.567324px -1.91785px 0px, 
+        var(--font-outline) 1.41734px -1.41108px 0px, 
+        var(--font-outline) 1.92034px -0.558831px 0px;
+}
+
+.highlight{
+    color: var(--font-color-secondary) !important;
+}
+.hidden{
+    display: none !important;
+}
+.overflowHidden{
+    overflow: hidden !important;
+}
+
+
+
+@media screen and (max-width: 880px) {
+    #forms-container .form-box{
+        width: 85vw;
+    }
+    .form-box .title{
+        font-size: 7vw;
+    }
+    .form-box .description{
+        font-size: 3vw;
+    }
+}
+@media screen and (max-width: 600px) {
+    #forms-container .form-box{
+        padding: 0 2rem 2rem 2rem;
+        padding-top: 8rem;
+    }
+    .form-box .agreement .description{
+        font-size: 2.7vw;
+    }
+    .form-box .notes{
+        font-size: 2.7vw;
+    }
+    .button-container, #submitBtn{
+        width: 100%;
+    }
+}

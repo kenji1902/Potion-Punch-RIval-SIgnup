@@ -1,0 +1,64 @@
+#registered-container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    /* border:2px solid red; */
+    overflow-y: auto;
+}
+#registered-container .logo{
+    position: absolute;
+    top: 2px;
+    z-index: 1;
+}
+#registered-container .registered-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 45rem;
+    height: fit-content;
+    padding: 0 5rem 5rem 5rem;
+    padding-top: 8rem;
+    top: 20rem;
+    /* border:2px solid red; */
+    background-color: var(--web-forms-container);
+    border-radius: 25px;
+}
+#registered-container form{
+    position:relative;
+    width: 100%;
+    height: 100%;
+}
+.registered-box .title{
+    color: var(--font-color-secondary);
+    font-size: 35pt;
+    text-align: center;
+    font-family: Monstriffic;
+}
+.registered-box .description{
+    color: var(--font-color-tertiary);
+    font-size: 13pt;
+    text-align: justify;
+}
+
+@media screen and (max-width: 880px) {
+    #registered-container .registered-box{
+        width: 85vw;
+    }
+}
+@media screen and (max-width: 600px) {
+    #registered-container .registered-box{
+        padding: 0 2rem 2rem 2rem;
+        padding-top: 8rem;
+    }
+    .registered-box .title{
+        font-size: 7vw;
+    }
+    .registered-box .description{
+        font-size: 3vw;
+    }
+}

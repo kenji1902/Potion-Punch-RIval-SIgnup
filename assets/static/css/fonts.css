@@ -1,0 +1,12 @@
+@font-face {
+    font-family: Monstriffic;
+    src: url(../../static/fonts/Monstriffic-Bold.otf);
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: LexendDeca;
+    src: url(../../static/fonts/LexendDeca-Regular.ttf);
+    font-weight: normal;
+    font-style: normal;
+}
