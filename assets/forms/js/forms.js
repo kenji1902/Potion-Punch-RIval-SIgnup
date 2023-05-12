@@ -29,10 +29,23 @@ $(document).ready(function () {
     //e.preventDefault();
     $("#submit").click();
   });
+
+  inputValidity("#email","Please enter a valid email")
 });
 
+function inputValidity(element,onMismatch,onEmpty=""){
+  $(element).on("input", function() {
+    if (this.validity.typeMismatch) {
+      this.setCustomValidity(onMismatch);
+    }
+    else {
+      this.setCustomValidity(onEmpty);
+    } 
+  });
+}
+
 async function fillYear(from,to){
-  for(let i = from; i <= to; i++){
+  for(let i = to; i >= from; i--){
     await $("#Year").append(`<option value="${i}">${i}</option>`);
   }
 }
