@@ -5,20 +5,70 @@ function toggleImage(checkbox) {
   }
 
 $(document).ready(function () {
- fillYear(1923,2023)
- fillCountry()
+//  fillYear(1923,2023)
+  fillCountry()
+  showMonthPlaceHolder();
+  //setMonthPlaceholder();
+  // var $monthInput = $('#month');
+  // var $placeholder = $monthInput.prev('.placeholder');
+  
+  // $monthInput.focus(function() {
+  //   $monthInput.removeAttr('placeholder');
+  //   $placeholder.hide(); // Hide the placeholder when the input is focused
+  // }).blur(function() {
+  //   if (!$monthInput.val()) {
+  //     $placeholder.show(); // Show the placeholder if the input is empty
+  //   }
+  // });
+  
 
+
+
+  // var $monthYearInput = $('#monthYearInput');
+
+  // $monthYearInput.datepicker({
+  //   format: "mm/yyyy",
+  //   minViewMode: 1,
+  //   autoclose: true,
+  //   orientation: 'bottom',
+  //   forceParse: false
+  // });
+  
+  // $('#monthYearButton').on('click', function() {
+  //   $monthYearInput.datepicker('show');
+  // });
   $("#submitMonstronauts").submit(function (e) { 
     e.preventDefault();
     $forms = $(this)
-    let data = $forms.serializeArray();
-    console.log(data);
+    let serializedData  = $forms.serializeArray();
+    let data = serializedData.reduce(function(obj, item) {
+      obj[item.name] = item.value;
+      return obj;
+    }, {});
+
+    let countryData = data.country.split("_");
     $.ajax({
       type: "POST",
       url: "https://sendy-staging.monstronauts.com/subscribe",
-      data: {pprData : data},
-      dataType: "json",
+      contentType: "application/x-www-form-urlencoded",
+      data: {
+        api_key: "4RqKgUKPaC0Z6OCjl06h",
+        list: data.list,
+        referrer: "https://potionpunchrivals.com/",
+        gdpr: true,
+        hp: "",
+        boolean: "true",
+        country: countryData[0],//Code [PH]
+        name: data.name,
+        email: data.email,
+        Birth: data.birth,
+        CountryName: countryData[1],//Value [Philippines]
+        Platform: data.platform
+      },
       success: function (response) {
+        window.location.href = "assets/registered/html/registered.html";
+      },
+      error: function (response) {
         window.location.href = "assets/registered/html/registered.html";
       }
     });
@@ -43,6 +93,62 @@ function inputValidity(element,onMismatch,onEmpty=""){
     } 
   });
 }
+function showMonthPlaceHolder(){
+  //var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  var $input = $('#month');
+  
+  $(".placeholder").html("MMM YYYY")
+  
+  $input.on("input", function(){
+      if($(this).val())
+        $(".placeholder").html("")
+      if(!$(this).val())
+        $(".placeholder").html("MMM YYYY")  
+    })
+
+}
+function setMonthPlaceholder(){
+  var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+  
+  var $input = $('#month');
+  $input.attr('type', 'text').val('MM/YYYY');
+
+  
+  $input.on('focus', function() {   
+      $.when($(this).attr('type', 'month').val('').promise())
+      .then( () => {
+          if(!isMobile){
+            setTimeout( () => {
+              $(this).get(0).showPicker()
+            },100)
+            console.log("!isMobile")
+          }
+          else{
+            setTimeout( () => {
+              $(this).get(0).focus();
+              $(this).get(0).click();
+            },100)
+            console.log("isMobile")
+
+          }
+        }
+        
+      )
+     
+      
+    });
+    
+    $input.on('blur', function() {
+      if (!$(this).val() || $(this).val() === 'MM/YYYY') {
+        $(this).attr('type', 'month').val('');
+      }
+      if (!$(this).val()) {
+        $(this).attr('type', 'text').val('MM/YYYY');
+      }
+    });
+  
+}
 
 async function fillYear(from,to){
   for(let i = to; i >= from; i--){
@@ -52,7 +158,7 @@ async function fillYear(from,to){
 
 async function fillCountry(){
   countries.forEach(async element => {
-    await $("#Countries").append(`<option value="${element.code}">${element.name}</option>`);
+    await $("#Countries").append(`<option value="${element.code}_${element.name}">${element.name}</option>`);
   });
 }
 
