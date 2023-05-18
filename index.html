@@ -96,9 +96,10 @@
 
 </head>
 <body>
-    <!-- <div id="background-container">
+    <!-- <picture class="background"></picture> -->
+    <div id="background-container">
         <img class="background" src="assets/signup/image/ppr_web_BG.png" alt="pp2 background">
-    </div> -->
+    </div>
     <div class="monstronauts-body">
         <div id="signup-container">
             <img class="logo" src="assets/signup/image/ppr_web_logo.png" alt="pp2 logo" >
@@ -159,7 +160,7 @@
                         <label for="birth">Date of Birth</label><br>
                         <div class="month-container">
                             <span class="placeholder"></span>
-                            <input id="month" type="month" name="birth" required>
+                            <input id="month" class="hideMonthPlaceholder" placeholder="MMMM YYYY" type="month" name="birth" min="1923-01" max="2020-12" required>
                         </div>
                         
 
@@ -218,7 +219,7 @@
                         <div class="agreement">
                             
                             <div class="checkbox-container">
-                                <input class="checkbox" type="checkbox" name="agreement" required>
+                                <input id="checkbox" class="checkbox" type="checkbox" name="agreement" required>
                                 <div class="checkmark"></div>
                             </div>
                             <!-- <label>

@@ -25,7 +25,9 @@ $(document).ready(function () {
   attachSubmitButtonEvent();
 
   inputValidity("#email","Please enter a valid email")
-
+  $('#checkbox').on('invalid', function() {
+    this.setCustomValidity('Please accept the terms to proceed');
+  });
   
 });
 
@@ -131,6 +133,7 @@ function attachSubmitButtonEvent(){
 
 function inputValidity(element,onMismatch,onEmpty=""){
   $(element).on("input", function() {
+    
     if (this.validity.typeMismatch) {
       this.setCustomValidity(onMismatch);
     }
@@ -140,16 +143,40 @@ function inputValidity(element,onMismatch,onEmpty=""){
   });
 }
 function showMonthPlaceHolder(){
-  //var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-  var $input = $('#month');
-  
-  $(".placeholder").html("MMM YYYY")
+  let isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  let placeholderValue = "MMMM YYYY";
+  let $input = $('#month');
+  let $placeholder = $(".placeholder");
+
+  $input.focus(function (e) { 
+    if(!isMobile){
+      $(this).removeClass("hideMonthPlaceholder");
+      $placeholder.html("")
+    } 
+  });
+  $input.blur(function (e) { 
+    if(!isMobile && !$(this).val()){
+      $(this).addClass("hideMonthPlaceholder");
+      $placeholder.html(placeholderValue)
+    } 
+  });
+
+  $placeholder.html(placeholderValue)
   
   $input.on("input", function(){
-      if($(this).val())
-        $(".placeholder").html("")
-      if(!$(this).val())
-        $(".placeholder").html("MMM YYYY")  
+      if($(this).val()){
+          // if(!isMobile){
+          //   $placeholder.html($(this).val())
+          //   $placeholder.css("color","black")
+          // }
+          // else
+            $placeholder.html("")
+      }
+      if(!$(this).val() && isMobile){
+          $placeholder.html(placeholderValue)  
+          $placeholder.css("color","gray")
+        
+      }
     })
 
 }

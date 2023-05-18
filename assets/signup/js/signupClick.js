@@ -6,6 +6,8 @@ $(document).ready(function () {
             
             $("#signup-container").addClass("slide-out-top").promise() 
         
+        ).then(
+            $(".monstronauts-body").addClass("overflowHidden").promise()
         ).then(()=>{
             
             let deferred = new $.Deferred();
@@ -25,6 +27,7 @@ $(document).ready(function () {
 
             setInterval(() => {
                 $("#forms-container").removeClass("overflowHidden")
+                $(".monstronauts-body").removeClass("overflowHidden")
             },1000);
 
         })
