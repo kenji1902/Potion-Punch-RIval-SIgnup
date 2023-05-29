@@ -1,45 +1,251 @@
 
-function toggleImage(checkbox) {
-    var image = document.getElementById("checkImage");
-    image.style.display = checkbox.checked ? "inline-block" : "none";
-  }
-
+let errorMsg = alertHtml("Connection Problem!","It seems that you are offline or the connection is slow")
+let slowConnection = alertHtml("Ohh no!","It seems that your connection is slow, Please wait!")
 $(document).ready(function () {
- fillYear(1923,2023)
- fillCountry()
+//  fillYear(1923,2023)
+  fillCountry()
+  showMonthPlaceHolder();
 
   $("#submitMonstronauts").submit(function (e) { 
     e.preventDefault();
     $forms = $(this)
-    let data = $forms.serializeArray();
-    console.log(data);
+    let timeout = 10000; //10 seconds
+    
+    checkDeviceOnline(timeout)
+      .done((value) => {
+        let data = loadData($forms);
+        //console.log(data)
+        ajaxSendForm(data);
+      })
+      .fail((error) => {
+          customAlert(errorMsg);
+      })
+  });
+
+  attachSubmitButtonEvent();
+
+  inputValidity("#email","Please enter a valid email")
+  $('#checkbox').on('invalid', function() {
+    this.setCustomValidity('Please accept the terms to proceed');
+  });
+  
+});
+
+function loadData($forms){
+  let serializedData  = $forms.serializeArray();
+  let data = serializedData.reduce(function(obj, item) {
+    obj[item.name] = item.value;
+    return obj;
+  }, {});
+  return data
+}
+
+function ajaxSendForm(data){
+  let countryData = data.country.split("_");
     $.ajax({
       type: "POST",
       url: "https://sendy-staging.monstronauts.com/subscribe",
-      data: {pprData : data},
-      dataType: "json",
+      contentType: "application/x-www-form-urlencoded",
+      dataType: 'json',
+      data: {
+        api_key: "4RqKgUKPaC0Z6OCjl06h",
+        list: data.list,
+        referrer: "https://potionpunchrivals.com/",
+        gdpr: true,
+        hp: "",
+        boolean: "true",
+        country: countryData[0],//Code [PH]
+        name: data.name,
+        email: data.email,
+        Birth: data.birth,
+        CountryName: countryData[1],//Value [Philippines]
+        Platform: data.platform
+      },
       success: function (response) {
+        window.location.href = "assets/registered/html/registered.html";
+      },
+      error: function (xhr, status, error) {
         window.location.href = "assets/registered/html/registered.html";
       }
     });
+}
+function checkNetworkStatus() {
+  let deferred = $.Deferred();
+  $.ajax({
+    url: "https://potionpunchrivals.com/assets/registered/html/registered.html", // Replace with the path to your static file
+    type: "GET",
+    timeout: 5000, // Timeout duration in milliseconds,
+    success: function () {
+      deferred.resolve();
+    },
+    error: function(xhr, textStatus, errorThrown) {
+      deferred.reject();
+    }
+  })
+  return deferred.promise();
+}
+function periodicallyCheckNetwork() {
+  setInterval(function() {
+    if(IS_ONLINE)
+      checkNetworkStatus();
+      console.log(isOnline)
+  }, 1000); // Check network status every 5 seconds (adjust as needed)
+}
+function checkDeviceOnline(timeout) {
+  let deferred = $.Deferred();
 
-  });
+  checkNetworkStatus()
+    .done(() => {
+      deferred.resolve();
+    })
+    .fail(() => {
+      detachSubmitButtonEvent();
+      customAlert(slowConnection,10000);
+      setTimeout(() => {
+    
+        checkNetworkStatus()
+          .done(() => {
+            attachSubmitButtonEvent();
+            deferred.resolve();
+          })
+          .fail(() =>{
+            attachSubmitButtonEvent();
+            deferred.reject("Check Internet Connection");
+          })
+        
+      }, timeout);
+    });
 
+  return deferred.promise();
+}
+
+function detachSubmitButtonEvent(){
+  $("#submitBtn").addClass("grayscale-element");
+  $("#submitBtn").off();
+}
+function attachSubmitButtonEvent(){
+  $("#submitBtn").removeClass("grayscale-element");
   $("#submitBtn").click(function (e) { 
     //e.preventDefault();
     $("#submit").click();
   });
-});
+}
+
+function inputValidity(element,onMismatch,onEmpty=""){
+  $(element).on("input", function() {
+    
+    if (this.validity.typeMismatch) {
+      this.setCustomValidity(onMismatch);
+    }
+    else {
+      this.setCustomValidity(onEmpty);
+    } 
+  });
+}
+function showMonthPlaceHolder(){
+  let isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  let placeholderValue = "MMMM YYYY";
+  let $input = $('#month');
+  let $placeholder = $(".placeholder");
+
+  $input.focus(function (e) { 
+    if(!isMobile){
+      $(this).removeClass("hideMonthPlaceholder");
+      $placeholder.html("")
+    } 
+  });
+  $input.blur(function (e) { 
+    if(!isMobile && !$(this).val()){
+      $(this).addClass("hideMonthPlaceholder");
+      $placeholder.html(placeholderValue)
+    } 
+  });
+
+  $placeholder.html(placeholderValue)
+  
+  $input.on("input", function(){
+      if($(this).val()){
+          // if(!isMobile){
+          //   $placeholder.html($(this).val())
+          //   $placeholder.css("color","black")
+          // }
+          // else
+            $placeholder.html("")
+      }
+      if(!$(this).val() && isMobile){
+          $placeholder.html(placeholderValue)  
+          $placeholder.css("color","gray")
+        
+      }
+    })
+
+}
+function setMonthPlaceholder(){
+  var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+  
+  var $input = $('#month');
+  $input.attr('type', 'text').val('MM/YYYY');
+
+  
+  $input.on('focus', function() {   
+      $.when($(this).attr('type', 'month').val('').promise())
+      .then( () => {
+          if(!isMobile){
+            setTimeout( () => {
+              $(this).get(0).showPicker()
+            },100)
+            // console.log("!isMobile")
+          }
+          else{
+            setTimeout( () => {
+              $(this).get(0).focus();
+              $(this).get(0).click();
+            },100)
+            // console.log("isMobile")
+
+          }
+        }
+        
+      )
+     
+      
+    });
+    
+    $input.on('blur', function() {
+      if (!$(this).val() || $(this).val() === 'MM/YYYY') {
+        $(this).attr('type', 'month').val('');
+      }
+      if (!$(this).val()) {
+        $(this).attr('type', 'text').val('MM/YYYY');
+      }
+    });
+  
+}
+function alertHtml(title,message){
+  return `
+  <div class="alert-fixed alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>${title}</strong> ${message}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  `
+}
+function customAlert(html,timeout=5000){
+  $('body').append(html);
+  setTimeout(function() {
+    $('.alert').alert('close');
+  }, timeout);
+}
 
 async function fillYear(from,to){
-  for(let i = from; i <= to; i++){
+  for(let i = to; i >= from; i--){
     await $("#Year").append(`<option value="${i}">${i}</option>`);
   }
 }
 
 async function fillCountry(){
   countries.forEach(async element => {
-    await $("#Countries").append(`<option value="${element.code}">${element.name}</option>`);
+    await $("#Countries").append(`<option value="${element.code}_${element.name}">${element.name}</option>`);
   });
 }
 
@@ -303,3 +509,36 @@ const countries = [
   {name: "Zambia",code: "ZM"},
   {name: "Zimbabwe",code: "ZW"}
 ];
+
+
+
+
+  //setMonthPlaceholder();
+  // var $monthInput = $('#month');
+  // var $placeholder = $monthInput.prev('.placeholder');
+  
+  // $monthInput.focus(function() {
+  //   $monthInput.removeAttr('placeholder');
+  //   $placeholder.hide(); // Hide the placeholder when the input is focused
+  // }).blur(function() {
+  //   if (!$monthInput.val()) {
+  //     $placeholder.show(); // Show the placeholder if the input is empty
+  //   }
+  // });
+  
+
+
+
+  // var $monthYearInput = $('#monthYearInput');
+
+  // $monthYearInput.datepicker({
+  //   format: "mm/yyyy",
+  //   minViewMode: 1,
+  //   autoclose: true,
+  //   orientation: 'bottom',
+  //   forceParse: false
+  // });
+  
+  // $('#monthYearButton').on('click', function() {
+  //   $monthYearInput.datepicker('show');
+  // });

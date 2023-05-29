@@ -3,27 +3,59 @@
     padding: 0;
     font-family: LexendDeca;
 }
+html{
+    height: 100%;
+}
 body{
+    /* display: block; */
+    /* width: 100%; */
+    min-height: 100%;
+    /* min-height: 100%; */
+    /* overflow-x: hidden;
+    overflow-y: auto; */
+    /* position: absolute; */
+    /* border:2px solid rgb(255, 0, 242); */
+    /* position: relative; */
+    
+}
+.monstronauts-body{
+    
     display: flex;
     flex-direction: column;
     align-items: center;
-    overflow: hidden;
+    /* overflow: hidden; */
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    /* bottom: 0; */
 }
+/* .background{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-image: url(../image/ppr_web_BG.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    max-width: 1440px;
+    margin-left: 10rem;
+} */
 #background-container{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
-    position: absolute;
+    /* overflow: hidden; */
+    position: fixed;
     width: 100%;
-    height: 100vh;
+    height: 100%;
+    background: linear-gradient(to right, #0394FF 50%, #FF4D7A 50%);
 }
 
 #background-container .background{
     position: absolute;
-    height: 115vh;
-    width: max-content;
+    height: 100%;
+    /* max-width: 100%; */
 }
 
 #signup-container{
@@ -31,15 +63,17 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
+    /* overflow: hidden; */
     position: relative;
     width: 100%;
-    height: 100vh;
+    height: 100%;
 }
 
 #signup-container .logo{
     position: absolute;
     top: 2px;
+    max-width: 100%;
+    max-height: 100%;
 }
 
 #signup-container .signupBtn{
@@ -81,22 +115,22 @@ body{
 
 #signup-container .copyright{
     position: absolute;
-    bottom: 1rem;
+    bottom: 0.5rem;
     user-select: none;
 }
 .copyright .text{
     color: var(--font-color-primary);
 }
-.copyright .privacy-policy{
+.copyright .hyperlinks{
     color: var(--font-color-secondary);
     text-decoration: none;   
 }
 
 
 @media screen and (max-width: 600px) {
-    #signup-container .logo{
+    /* #signup-container .logo{
         width: 85vw;
-    }
+    } */
     #signup-container .signupBtn{
         width: 85vw;
     }
@@ -108,7 +142,7 @@ body{
     }
     .copyright{
         width: 85vw;
-        font-size: 2.8vw;
+        font-size: 2.2vw;
         text-align: center;
     }
  
