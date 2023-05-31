@@ -29,6 +29,27 @@ $(document).ready(function () {
     this.setCustomValidity('Please accept the terms to proceed');
   });
   
+  var items = $('.carousel .carousel-item');
+  items.each(function() {
+      var minPerSlide = 4;
+      var next = $(this).next();
+
+      for (var i = 1; i < minPerSlide; i++) {
+          if (!next.length) {
+              // wrap carousel by using first child
+              next = items.first();
+          }
+
+          var cloneChild = next.clone(true);
+          $(this).append(cloneChild.children().eq(0));
+          next = next.next();
+      }
+  });
+
+
+  Fancybox.bind('[data-fancybox="gallery"]',{
+  });
+
 });
 
 function loadData($forms){
