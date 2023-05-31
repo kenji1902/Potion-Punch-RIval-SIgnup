@@ -45,12 +45,31 @@ $(document).ready(function () {
           next = next.next();
       }
   });
-
-
-  Fancybox.bind('[data-fancybox="gallery"]',{
+  
+  let images = [];
+  $.each($("#monstronauts-carousel .carousel-item.active img"), 
+  function (indexInArray, valueOfElement) { 
+    images.push({src : $(this).attr("src")});
   });
 
+  $(".card-img").click(function(e){
+    var index = $(this).attr("index");
+    console.log(index)
+    let temp = moveElementToFront(images,index);
+    Fancybox.show(temp)
+  })
+ 
+  
 });
+function moveElementToFront(array, index) {
+  if (index >= 0 && index < array.length) {
+    var newArray = [...array];
+    var element = newArray.splice(index, 1)[0];
+    newArray.unshift(element);
+    return newArray;
+  }
+  return array; 
+}
 
 function loadData($forms){
   let serializedData  = $forms.serializeArray();
