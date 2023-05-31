@@ -66,14 +66,17 @@ a:hover{
 }
 .carousel-inner{
     /* position: absolute; */
-    width: 40rem;    
+    width: 35rem;    
 }
 .carousel .card{
     position: relative;
-    height: 14.1rem !important;
-    margin-right: 1rem;
-    height: 15rem;
     width: 8rem;
+    height: 15rem;
+    margin-right: 1rem;
+}
+.carousel .card-img{
+    position: relative;
+    height: 100%;   
 }
 .carousel img{
     position: relative;
@@ -84,6 +87,13 @@ a:hover{
     -moz-transition: transform 0.2s ease, opacity .5s ease-out;
     -o-transition: transform 0.2s ease, opacity .5s ease-out;
     transition: transform 0.2s ease, opacity .5s ease-out;
+}
+.f-button svg, .fancybox__infobar{
+    color: var(--Monstronauts-tertiary);
+}
+.f-button.is-next svg, .f-button.is-prev svg{
+    width: 3rem;
+    height: 3rem;
 }
 
 /* @media (max-width: 767px) {
@@ -247,44 +257,6 @@ a:hover{
     background-image: url(../../forms/images/ppr_web_check.png);
   }
  
-
-/* .checkbox:before {
-    position: relative;
-    display: block;
-    width: 2rem !important;
-    height: 2rem !important;
-    border: 1px solid var(--Monstronauts-primary);
-    content: "";
-    background: var(--Monstronauts-secondary);
-}
-.checkbox:after {
-    position: relative;
-    display: block;
-    left: 0px;
-    top: -2rem;
-    width: 2rem !important;
-    height: 2rem !important;
-    border-width: 1px;
-    border-style: solid;
-    border-color: var(--Monstronauts-primary);
-    content: "";
-     background-image: linear-gradient(135deg, #B1B6BE 0%, #FFF 100%); 
-    background-repeat: no-repeat;
-    background-position: center;
-}
-.checkbox:checked:after {
-    background-image: url(../../forms/images/ppr_web_check.png);
-}
-
-.checkbox{
-    display: inline-block;
-    width: 2rem !important;
-    height: 2rem !important;
-}
-
-#checkImage{
-    position: absolute;
-} */
 .birth .form-box .input-group{
     width: 50%;
 }
@@ -408,7 +380,7 @@ a:hover{
         flex-direction: column;
     }
     .carousel-inner{
-        width: 45rem;
+        width: 40rem;
     }
     .vl{
         display: none;
@@ -418,15 +390,25 @@ a:hover{
     #forms-container .formColumn{
         max-width: 85vw;
     }
+    .carousel-inner{
+        width: 52rem;
+    }
+    .carousel{
+        height: 22rem;
+        /* width: calc(100% + 4rem); */
+    }
+    .carousel .card{
+        height: 22rem;
+        width: 12rem;
+        margin-right: 0.5rem;
+    }
 }
 @media screen and (max-width: 600px) {
     #forms-container .form-box{
         padding: 0 2rem 0rem 2rem; 
         /* padding-top: 8rem; */
     }
-    .carousel{
-        width: calc(100% + 4rem);
-    }
+    
     #forms-container .formColumn{
         max-width: 95vw;
     }
