@@ -83,17 +83,17 @@ function ajaxSendForm(data){
         Platform: data.platform
       },
       success: function (response) {
-        window.location.href = "assets/registered/html/registered.html";
+        window.location.href = "registered.html";
       },
       error: function (xhr, status, error) {
-        window.location.href = "assets/registered/html/registered.html";
+        window.location.href = "registered.html";
       }
     });
 }
 function checkNetworkStatus() {
   let deferred = $.Deferred();
   $.ajax({
-    url: "https://potionpunchrivals.com/assets/registered/html/registered.html", // Replace with the path to your static file
+    url: "https://potionpunchrivals.com/registered.html", // Replace with the path to your static file
     type: "GET",
     timeout: 5000, // Timeout duration in milliseconds,
     success: function () {
