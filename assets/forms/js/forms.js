@@ -45,12 +45,31 @@ $(document).ready(function () {
           next = next.next();
       }
   });
-
-
-  Fancybox.bind('[data-fancybox="gallery"]',{
+  
+  let images = [];
+  $.each($("#monstronauts-carousel .carousel-item.active img"), 
+  function (indexInArray, valueOfElement) { 
+    images.push({src : $(this).attr("src")});
   });
 
+  $(".card-img").click(function(e){
+    var index = $(this).attr("index");
+    console.log(index)
+    let temp = moveElementToFront(images,index);
+    Fancybox.show(temp)
+  })
+ 
+  
 });
+function moveElementToFront(array, index) {
+  if (index >= 0 && index < array.length) {
+    var newArray = [...array];
+    var element = newArray.splice(index, 1)[0];
+    newArray.unshift(element);
+    return newArray;
+  }
+  return array; 
+}
 
 function loadData($forms){
   let serializedData  = $forms.serializeArray();
@@ -83,17 +102,17 @@ function ajaxSendForm(data){
         Platform: data.platform
       },
       success: function (response) {
-        window.location.href = "assets/registered/html/registered.html";
+        window.location.href = "registered.html";
       },
       error: function (xhr, status, error) {
-        window.location.href = "assets/registered/html/registered.html";
+        window.location.href = "registered.html";
       }
     });
 }
 function checkNetworkStatus() {
   let deferred = $.Deferred();
   $.ajax({
-    url: "https://potionpunchrivals.com/assets/registered/html/registered.html", // Replace with the path to your static file
+    url: "https://potionpunchrivals.com/registered.html", // Replace with the path to your static file
     type: "GET",
     timeout: 5000, // Timeout duration in milliseconds,
     success: function () {
