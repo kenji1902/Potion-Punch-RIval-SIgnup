@@ -23,7 +23,7 @@ a:hover{
 }
 #forms-container .formColumn{
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     position: relative;
     background-color: var(--web-forms-container);
     max-width: 85rem;
@@ -49,6 +49,74 @@ a:hover{
     /* border:2px solid red; */
     
 }
+.carousel {
+    position: relative;
+    width: calc(110% + 4rem);
+    height: 15rem;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    /* left: -1rem; */
+    /* height: 15rem; */
+}
+.carousel-container{
+    position: relative;
+    width: 75%;
+    overflow: hidden;
+}
+.carousel-inner{
+    /* position: absolute; */
+    width: 40rem;    
+}
+.carousel .card{
+    position: relative;
+    height: 14.1rem !important;
+    margin-right: 1rem;
+    height: 15rem;
+    width: 8rem;
+}
+.carousel .img{
+    position: relative;
+    height: 100%;
+}
+
+
+/* @media (max-width: 767px) {
+    .carousel-inner .carousel-item > div {
+        display: none;
+    }
+    .carousel-inner .carousel-item > div:first-child {
+        display: block;
+    }
+} */
+
+.carousel-inner .carousel-item.active,
+.carousel-inner .carousel-item-next,
+.carousel-inner .carousel-item-prev {
+    display: flex;
+}
+
+/* medium and up screens */
+/* @media (min-width: 768px) { */
+    
+.carousel-inner .carousel-item-end.active,
+.carousel-inner .carousel-item-next {
+    transform: translateX(25%);
+}
+
+.carousel-inner .carousel-item-start.active, 
+.carousel-inner .carousel-item-prev {
+    transform: translateX(-25%);
+}
+/* } */
+
+.carousel-inner .carousel-item-end,
+.carousel-inner .carousel-item-start { 
+  transform: translateX(0);
+}
+
+
+
 #forms-container form{
     position:relative;
     width: 100%;
@@ -63,7 +131,7 @@ a:hover{
 .form-box .description{
     color: var(--font-color-tertiary);
     font-size: 13pt;
-    /*text-align: justify;*/
+    text-align: center;
 }
 
 .form-box label{
@@ -329,7 +397,9 @@ a:hover{
     .formColumn{
         flex-direction: column;
     }
-    
+    .carousel-inner{
+        width: 45rem;
+    }
     .vl{
         display: none;
     }
@@ -343,6 +413,9 @@ a:hover{
     #forms-container .form-box{
         padding: 0 2rem 0rem 2rem; 
         /* padding-top: 8rem; */
+    }
+    .carousel{
+        width: calc(100% + 4rem);
     }
     #forms-container .formColumn{
         max-width: 95vw;
