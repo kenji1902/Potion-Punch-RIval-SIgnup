@@ -39,7 +39,6 @@
     font-size: 13pt;
     text-align: justify;
 }
-
 @media screen and (max-width: 880px) {
     #registered-container .registered-box{
         width: 85vw;

@@ -20,6 +20,8 @@ a:hover{
     position: absolute;
     top: 2px;
     z-index: 1;
+    max-width: 100%;
+    max-height: 100%;
 }
 #forms-container .formColumn{
     display: flex;
@@ -274,6 +276,7 @@ a:hover{
     gap: 1rem;
 }
 .form-box .agreement .description{
+    text-align: left;
     width: 90%;
     color: var(--font-color-primary);
     font-size: 10pt;
@@ -301,6 +304,9 @@ a:hover{
     position: relative;
     user-select: none;
     width: 50%;
+}
+#submitBtn:active{
+    filter: brightness(80%) saturate(70%);
 }
 #submitBtn .btnImg{
     position: relative;
@@ -365,7 +371,9 @@ a:hover{
 .grayscale-element {
     filter: grayscale(100%);
 }
-
+.hover-highlight:hover{
+    filter: brightness(110%) saturate(140%);
+}
 
 @media screen and (max-width: 1300px) {
     #forms-container .formColumn{
@@ -411,6 +419,9 @@ a:hover{
     
     #forms-container .formColumn{
         max-width: 95vw;
+    }
+    .carousel{
+        width: calc(100% + 16vw);;
     }
     .form-box .agreement .description{
         font-size: 2.7vw;

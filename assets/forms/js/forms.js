@@ -1,6 +1,8 @@
 
 let errorMsg = alertHtml("Connection Problem!","It seems that you are offline or the connection is slow")
 let slowConnection = alertHtml("Ohh no!","It seems that your connection is slow, Please wait!")
+const emailRegex = /^[a-zA-Z0-9._]+@[a-zA-Z0-9]+\.[a-zA-Z]+$/;
+
 $(document).ready(function () {
 //  fillYear(1923,2023)
   fillCountry()
@@ -15,6 +17,7 @@ $(document).ready(function () {
       .done((value) => {
         let data = loadData($forms);
         //console.log(data)
+        detachSubmitButtonEvent();
         ajaxSendForm(data);
       })
       .fail((error) => {
@@ -24,11 +27,27 @@ $(document).ready(function () {
 
   attachSubmitButtonEvent();
 
-  inputValidity("#email","Please enter a valid email")
-  $('#checkbox').on('invalid', function() {
-    this.setCustomValidity('Please accept the terms to proceed');
+  inputValidity("#email","Please enter a valid email");
+  
+  var checkbox = $('#checkbox');
+  checkbox.change(function() {
+    if (!$(this).is(':checked')) {
+      this.setCustomValidity('Please accept the terms to proceed');
+    } else {
+      this.setCustomValidity('');
+    }
   });
   
+  $(window).on("pageshow", function() {
+    checkbox.change();
+  });
+  $('#monstronauts-carousel').carousel();
+  setUpCarousel();
+ 
+  
+});
+
+function setUpCarousel(){
   var items = $('.carousel .carousel-item');
   items.each(function() {
       var minPerSlide = 4;
@@ -46,11 +65,17 @@ $(document).ready(function () {
       }
   });
   
-  let images = [];
-  $.each($("#monstronauts-carousel .carousel-item.active img"), 
-  function (indexInArray, valueOfElement) { 
-    images.push({src : $(this).attr("src")});
-  });
+  let images = [
+    {src : "assets/forms/images/ppr_web_screenshot_gameplay.png"},
+    {src : "assets/forms/images/ppr_web_screenshot_homescreen.png"},
+    {src : "assets/forms/images/ppr_web_screenshot_keepers.png"},
+    {src : "assets/forms/images/ppr_web_screenshot_result.png"},
+    {src : "assets/forms/images/ppr_web_screenshot_vs.png"}
+  ];
+  // $.each($("#monstronauts-carousel .carousel-item img"), 
+  // function (indexInArray, valueOfElement) { 
+  //   images.push({src : $(this).attr("src")});
+  // });
 
   $(".card-img").click(function(e){
     var index = $(this).attr("index");
@@ -58,9 +83,7 @@ $(document).ready(function () {
     let temp = moveElementToFront(images,index);
     Fancybox.show(temp)
   })
- 
-  
-});
+}
 function moveElementToFront(array, index) {
   if (index >= 0 && index < array.length) {
     var newArray = [...array];
@@ -160,28 +183,39 @@ function checkDeviceOnline(timeout) {
 }
 
 function detachSubmitButtonEvent(){
-  $("#submitBtn").addClass("grayscale-element");
-  $("#submitBtn").off();
+  let btn = $("#submitBtn");
+  btn.removeClass("hover-highlight");
+  btn.addClass("grayscale-element");
+  btn.off();
 }
 function attachSubmitButtonEvent(){
-  $("#submitBtn").removeClass("grayscale-element");
-  $("#submitBtn").click(function (e) { 
+  let btn = $("#submitBtn");
+  btn.addClass("hover-highlight");
+  btn.removeClass("grayscale-element");
+  btn.click(function (e) { 
     //e.preventDefault();
     $("#submit").click();
   });
 }
 
-function inputValidity(element,onMismatch,onEmpty=""){
+function inputValidity(element, onMismatch, onEmpty = "") {
   $(element).on("input", function() {
-    
-    if (this.validity.typeMismatch) {
-      this.setCustomValidity(onMismatch);
+    const inputElement = this;
+
+    if (inputElement.type === 'email' && !validateEmail(inputElement.value)) {
+      inputElement.setCustomValidity(onMismatch);
+    } else if (inputElement.validity.typeMismatch) {
+      inputElement.setCustomValidity(onMismatch);
+    } else {
+      inputElement.setCustomValidity(onEmpty);
     }
-    else {
-      this.setCustomValidity(onEmpty);
-    } 
   });
 }
+
+function validateEmail(email) {
+  return emailRegex.test(email);
+}
+
 function showMonthPlaceHolder(){
   let isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
   let placeholderValue = "MMMM YYYY";
