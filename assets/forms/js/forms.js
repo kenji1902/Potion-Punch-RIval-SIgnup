@@ -40,7 +40,7 @@ $(document).ready(function () {
  
 });
 
-function setUpCarousel(id, carouselItem = ".carousel-item"){
+function setUpCarousel(id, carouselItem = ".carousel-item", onClick = ".card-img"){
   $(id).carousel();
   let items = $(`${id} ${carouselItem}`);
   items.each(function() {
@@ -59,7 +59,7 @@ function setUpCarousel(id, carouselItem = ".carousel-item"){
       }
   });
   
-  $(".card-img").click(function(e){
+  $(onClick).click(function(e){
     var index = $(this).attr("index");
     let temp = moveElementToFront(images,index);
     Fancybox.show(temp)
