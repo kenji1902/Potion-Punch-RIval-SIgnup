@@ -2,6 +2,13 @@
 let errorMsg = alertHtml("Connection Problem!","It seems that you are offline or the connection is slow")
 let slowConnection = alertHtml("Ohh no!","It seems that your connection is slow, Please wait!")
 const emailRegex = /^[a-zA-Z0-9._]+@[a-zA-Z0-9]+\.[a-zA-Z]+$/;
+let images = [
+  {src : "assets/forms/images/ppr_web_screenshot_gameplay.png"},
+  {src : "assets/forms/images/ppr_web_screenshot_homescreen.png"},
+  {src : "assets/forms/images/ppr_web_screenshot_keepers.png"},
+  {src : "assets/forms/images/ppr_web_screenshot_result.png"},
+  {src : "assets/forms/images/ppr_web_screenshot_vs.png"}
+];
 
 $(document).ready(function () {
 //  fillYear(1923,2023)
@@ -13,73 +20,47 @@ $(document).ready(function () {
     $forms = $(this)
     let timeout = 10000; //10 seconds
     
+    detachSubmitButtonEvent();
     checkDeviceOnline(timeout)
       .done((value) => {
         let data = loadData($forms);
         //console.log(data)
-        detachSubmitButtonEvent();
         ajaxSendForm(data);
       })
       .fail((error) => {
+          attachSubmitButtonEvent();
           customAlert(errorMsg);
       })
   });
 
   attachSubmitButtonEvent();
-
   inputValidity("#email","Please enter a valid email");
-  
-  var checkbox = $('#checkbox');
-  checkbox.change(function() {
-    if (!$(this).is(':checked')) {
-      this.setCustomValidity('Please accept the terms to proceed');
-    } else {
-      this.setCustomValidity('');
-    }
-  });
-  
-  $(window).on("pageshow", function() {
-    checkbox.change();
-  });
-  $('#monstronauts-carousel').carousel();
-  setUpCarousel();
+  checkboxValidity("#checkbox","Please accept the terms to proceed")
+  setUpCarousel("#monstronauts-carousel");
  
-  
 });
 
-function setUpCarousel(){
-  var items = $('.carousel .carousel-item');
+function setUpCarousel(id, carouselItem = ".carousel-item"){
+  $(id).carousel();
+  let items = $(`${id} ${carouselItem}`);
   items.each(function() {
-      var minPerSlide = 4;
-      var next = $(this).next();
+      let minPerSlide = 4;
+      let next = $(this).next();
 
-      for (var i = 1; i < minPerSlide; i++) {
+      for (let i = 1; i < minPerSlide; i++) {
           if (!next.length) {
               // wrap carousel by using first child
               next = items.first();
           }
 
-          var cloneChild = next.clone(true);
+          let cloneChild = next.clone(true);
           $(this).append(cloneChild.children().eq(0));
           next = next.next();
       }
   });
   
-  let images = [
-    {src : "assets/forms/images/ppr_web_screenshot_gameplay.png"},
-    {src : "assets/forms/images/ppr_web_screenshot_homescreen.png"},
-    {src : "assets/forms/images/ppr_web_screenshot_keepers.png"},
-    {src : "assets/forms/images/ppr_web_screenshot_result.png"},
-    {src : "assets/forms/images/ppr_web_screenshot_vs.png"}
-  ];
-  // $.each($("#monstronauts-carousel .carousel-item img"), 
-  // function (indexInArray, valueOfElement) { 
-  //   images.push({src : $(this).attr("src")});
-  // });
-
   $(".card-img").click(function(e){
     var index = $(this).attr("index");
-    console.log(index)
     let temp = moveElementToFront(images,index);
     Fancybox.show(temp)
   })
@@ -93,7 +74,6 @@ function moveElementToFront(array, index) {
   }
   return array; 
 }
-
 function loadData($forms){
   let serializedData  = $forms.serializeArray();
   let data = serializedData.reduce(function(obj, item) {
@@ -102,7 +82,6 @@ function loadData($forms){
   }, {});
   return data
 }
-
 function ajaxSendForm(data){
   let countryData = data.country.split("_");
     $.ajax({
@@ -147,16 +126,8 @@ function checkNetworkStatus() {
   })
   return deferred.promise();
 }
-function periodicallyCheckNetwork() {
-  setInterval(function() {
-    if(IS_ONLINE)
-      checkNetworkStatus();
-      console.log(isOnline)
-  }, 1000); // Check network status every 5 seconds (adjust as needed)
-}
 function checkDeviceOnline(timeout) {
   let deferred = $.Deferred();
-  detachSubmitButtonEvent();
   checkNetworkStatus()
     .done(() => {
       deferred.resolve();
@@ -164,14 +135,12 @@ function checkDeviceOnline(timeout) {
     .fail(() => {
       customAlert(slowConnection,10000);
       setTimeout(() => {
-    
+
         checkNetworkStatus()
           .done(() => {
-            // attachSubmitButtonEvent();
             deferred.resolve();
           })
           .fail(() =>{
-            attachSubmitButtonEvent();
             deferred.reject("Check Internet Connection");
           })
         
@@ -180,7 +149,6 @@ function checkDeviceOnline(timeout) {
 
   return deferred.promise();
 }
-
 function detachSubmitButtonEvent(){
   let btn = $("#submitBtn");
   btn.removeClass("hover-highlight");
@@ -198,7 +166,6 @@ function attachSubmitButtonEvent(){
     $("#submit").click();
   });
 }
-
 function inputValidity(element, onMismatch, onEmpty = "") {
   $(element).on("input", function() {
     const inputElement = this;
@@ -212,11 +179,23 @@ function inputValidity(element, onMismatch, onEmpty = "") {
     }
   });
 }
-
+function checkboxValidity(element, onMismatch, onEmpty = "") {
+  let checkbox = $(element);
+  checkbox.change(function() {
+    if (!$(this).is(':checked')) {
+      this.setCustomValidity(onMismatch);
+    } else {
+      this.setCustomValidity(onEmpty);
+    }
+  });
+  
+  $(window).on("pageshow", function() {
+    checkbox.change();
+  });
+}
 function validateEmail(email) {
   return emailRegex.test(email);
 }
-
 function showMonthPlaceHolder(){
   let isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
   let placeholderValue = "MMMM YYYY";
@@ -311,25 +290,20 @@ function customAlert(html,timeout=5000){
     $('.alert').alert('close');
   }, timeout);
 }
-
 async function fillYear(from,to){
   for(let i = to; i >= from; i--){
     await $("#Year").append(`<option value="${i}">${i}</option>`);
   }
 }
-
 async function fillCountry(){
   countries.forEach(async element => {
     await $("#Countries").append(`<option value="${element.code}_${element.name}">${element.name}</option>`);
   });
 }
-
 function slideUpforms(){
   $("#forms-container").addClass("slide-out-top");
   $("#forms-container").addClass("hidden");
 }
-
-
 const countries = [
   {name: "Afghanistan",code: "AF"},
   {name: "Åland Islands",code: "AX"},
@@ -584,36 +558,3 @@ const countries = [
   {name: "Zambia",code: "ZM"},
   {name: "Zimbabwe",code: "ZW"}
 ];
-
-
-
-
-  //setMonthPlaceholder();
-  // var $monthInput = $('#month');
-  // var $placeholder = $monthInput.prev('.placeholder');
-  
-  // $monthInput.focus(function() {
-  //   $monthInput.removeAttr('placeholder');
-  //   $placeholder.hide(); // Hide the placeholder when the input is focused
-  // }).blur(function() {
-  //   if (!$monthInput.val()) {
-  //     $placeholder.show(); // Show the placeholder if the input is empty
-  //   }
-  // });
-  
-
-
-
-  // var $monthYearInput = $('#monthYearInput');
-
-  // $monthYearInput.datepicker({
-  //   format: "mm/yyyy",
-  //   minViewMode: 1,
-  //   autoclose: true,
-  //   orientation: 'bottom',
-  //   forceParse: false
-  // });
-  
-  // $('#monthYearButton').on('click', function() {
-  //   $monthYearInput.datepicker('show');
-  // });
