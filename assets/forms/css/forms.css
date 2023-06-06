@@ -45,6 +45,9 @@ a:hover{
     width: 45%;
     /* height: fit-content; */
     padding: 0 2rem 0rem 2rem;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
     user-select: none;
     /* padding-top: 8rem; */
     /* top: 8rem; */
@@ -58,6 +61,7 @@ a:hover{
     overflow: hidden;
     display: flex;
     justify-content: center;
+    margin-bottom: 2rem;
     /* left: -1rem; */
     /* height: 15rem; */
 }
@@ -165,16 +169,15 @@ a:hover{
     padding: 0.5rem;
     width: 100%;
     -webkit-min-logical-width:calc(100% - 18px);
-    border-radius: 10px;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
+    border-radius: 10px;
 }
 .month-container{
     display: flex;
     align-items: center;
     position: relative;
     width: 100%;
-    height: fit-content;
 }
 
 .month-container .placeholder{
@@ -192,6 +195,9 @@ a:hover{
 .hideMonthPlaceholder:in-range::-webkit-datetime-edit-month-field,  
 .hideMonthPlaceholder:in-range::-webkit-datetime-edit-text { 	
     color: transparent; 
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
     user-select: none;
     background-color: transparent;
 }
@@ -302,10 +308,13 @@ a:hover{
     align-items: center;
     cursor: pointer;
     position: relative;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
     user-select: none;
     width: 50%;
 }
-#submitBtn:active{
+#submitBtn:active:not(.grayscale-element){
     filter: brightness(80%) saturate(70%);
 }
 #submitBtn .btnImg{
@@ -342,6 +351,9 @@ a:hover{
     margin-top: 3rem;
     bottom: -2rem;
     position: absolute;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
     user-select: none;
     width: 100%;
 }
@@ -383,6 +395,9 @@ a:hover{
     }
     #forms-container .form-box{
         width: 100%;
+    }
+    .carousel{
+        margin-bottom: 0rem;
     }
     .formColumn{
         flex-direction: column;

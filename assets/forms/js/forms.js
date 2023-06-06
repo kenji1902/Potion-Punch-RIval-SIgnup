@@ -125,17 +125,17 @@ function ajaxSendForm(data){
         Platform: data.platform
       },
       success: function (response) {
-        window.location.href = "registered.html";
+        window.location.href = "registered";
       },
       error: function (xhr, status, error) {
-        window.location.href = "registered.html";
+        window.location.href = "registered";
       }
     });
 }
 function checkNetworkStatus() {
   let deferred = $.Deferred();
   $.ajax({
-    url: "https://potionpunchrivals.com/registered.html", // Replace with the path to your static file
+    url: "https://potionpunchrivals.com/registered", // Replace with the path to your static file
     type: "GET",
     timeout: 5000, // Timeout duration in milliseconds,
     success: function () {
@@ -156,19 +156,18 @@ function periodicallyCheckNetwork() {
 }
 function checkDeviceOnline(timeout) {
   let deferred = $.Deferred();
-
+  detachSubmitButtonEvent();
   checkNetworkStatus()
     .done(() => {
       deferred.resolve();
     })
     .fail(() => {
-      detachSubmitButtonEvent();
       customAlert(slowConnection,10000);
       setTimeout(() => {
     
         checkNetworkStatus()
           .done(() => {
-            attachSubmitButtonEvent();
+            // attachSubmitButtonEvent();
             deferred.resolve();
           })
           .fail(() =>{
@@ -186,12 +185,14 @@ function detachSubmitButtonEvent(){
   let btn = $("#submitBtn");
   btn.removeClass("hover-highlight");
   btn.addClass("grayscale-element");
+  $("#submit"). attr("disabled", true);
   btn.off();
 }
 function attachSubmitButtonEvent(){
   let btn = $("#submitBtn");
   btn.addClass("hover-highlight");
   btn.removeClass("grayscale-element");
+  $("#submit"). attr("disabled", false);
   btn.click(function (e) { 
     //e.preventDefault();
     $("#submit").click();

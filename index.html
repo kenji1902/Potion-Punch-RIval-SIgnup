@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html;"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Potion Punch Rivals</title>
 
@@ -265,6 +265,9 @@
                                 </select>
                             </div>
                         </div> -->
+                        <div class="preloadImages hidden">
+                            <img src="assets/forms/images/ppr_web_dropdown.png" alt="">
+                        </div>
                         <!-- Countries -->
                         <label for="countries">Country</label><br>
                         <div class="input-group">
@@ -289,7 +292,9 @@
                         
                         <!-- Agreement -->
                         <div class="agreement">
-                            
+                            <div class="preloadImages hidden">
+                                <img src="assets/forms/images/ppr_web_check.png" alt="">
+                            </div>
                             <div class="checkbox-container">
                                 <input id="checkbox" class="checkbox" type="checkbox" name="agreement" required>
                                 <div class="checkmark"></div>
@@ -299,9 +304,9 @@
                                 <img src="assets/forms/images/ppr_web_check.png" alt="Checkmark" id="checkImage" style="display: none;">
                             </label> -->
                             <span class="description">
-                                I  accept the <a href="https://monstronauts.com/terms-of-service/potion-punch-rivals/">Terms of Service</a> 
+                                I  accept the <a href="https://monstronauts.com/terms-of-service/potion-punch-rivals/" class="highlight" target="_blank">Terms of Service</a> 
                                 and 
-                                <a href="https://monstronauts.com/privacy-policy/potion-punch-rivals">Privacy Policy</a>, 
+                                <a href="https://monstronauts.com/privacy-policy/potion-punch-rivals" class="highlight" target="_blank">Privacy Policy</a>, 
                                 and would like to receive the latest news, updates, and other marketing-related content 
                                 about Potion Punch Rivals from the Monstronauts team.
                             </span>
@@ -315,7 +320,7 @@
         
                         <input id="submit" type="submit" class="hidden">
                         <div class="button-container">
-                            <div id="submitBtn" class="hover-highlight">
+                            <div id="submitBtn" class="hover-highlight" ontouchstart="">
                                 <img class="btnImg" src="assets/forms/images/ppr_web_button_submit.png" alt="">
                                 <span class="btnText">SUBMIT</span>
                             </div>

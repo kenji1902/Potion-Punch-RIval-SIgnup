@@ -77,6 +77,7 @@ body{
 
 #signup-container .signupBtn{
     position: absolute;
+    width: -moz-fit-content;
     width: fit-content;
     display: flex;
     justify-content: center;
@@ -91,6 +92,9 @@ body{
 }
 .signupBtn .btnText{
     position: absolute;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
     user-select: none;
     color: var(--font-color-primary);
     font-family: Monstriffic;
@@ -115,6 +119,9 @@ body{
 #signup-container .copyright{
     position: absolute;
     bottom: 0.5rem;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
     user-select: none;
 }
 .copyright .text{
