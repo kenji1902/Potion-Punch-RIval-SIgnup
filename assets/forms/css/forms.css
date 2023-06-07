@@ -314,7 +314,7 @@ a:hover{
     user-select: none;
     width: 50%;
 }
-#submitBtn:active:not(.grayscale-element){
+.Monstronauts-btn:active:not(.grayscale-element){
     filter: brightness(80%) saturate(70%);
 }
 #submitBtn .btnImg{

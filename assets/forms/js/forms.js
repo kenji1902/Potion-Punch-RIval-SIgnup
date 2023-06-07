@@ -90,7 +90,7 @@ function ajaxSendForm(data){
       contentType: "application/x-www-form-urlencoded",
       dataType: 'json',
       data: {
-        api_key: "4RqKgUKPaC0Z6OCjl06h",
+        api_key: "8bQQyZdQC8J7O2qad8lz",
         list: data.list,
         referrer: "https://potionpunchrivals.com/",
         gdpr: true,
