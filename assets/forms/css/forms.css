@@ -11,6 +11,8 @@ a:hover{
     /* justify-content: center; */
     flex-direction: column;
     width: 100%;
+    height: 100%;
+    overflow-y: auto;
     /* height: 100%; */
     position: relative;
     /* border:2px solid red; */
@@ -29,7 +31,7 @@ a:hover{
     position: relative;
     background-color: var(--web-forms-container);
     max-width: 85rem;
-    padding-top: 5rem;
+    padding-top: 6rem;
     margin-top: 8rem;
     border-radius: 25px;
     margin-bottom: 1rem;
@@ -433,10 +435,10 @@ a:hover{
     }
     
     #forms-container .formColumn{
-        max-width: 95vw;
+        max-width: 90vw;
     }
     .carousel{
-        width: calc(100% + 16vw);;
+        width: calc(100% + 13vw);;
     }
     .form-box .agreement .description{
         font-size: 2.7vw;

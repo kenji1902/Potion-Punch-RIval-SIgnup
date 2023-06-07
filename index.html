@@ -108,239 +108,239 @@
     <link rel="preload" as="image" href="assets/forms/images/ppr_web_check.png">
 </head>
 <body>
-    <!-- <picture class="background"></picture> -->
-    <div id="background-container">
+    <picture class="background"></picture>
+    <!-- <div id="background-container">
         <img class="background" src="assets/signup/image/ppr_web_BG.png" alt="pp2 background">
+    </div> -->
+    <!-- <div class="monstronauts-body"> -->
+    <div id="signup-container">
+        <img class="logo" src="assets/signup/image/ppr_web_logo.png" alt="pp2 logo" >
+        <div id="signup" class="Monstronauts-btn signupBtn hover-highlight" ontouchstart="">
+            <img class="btnImg" src="assets/signup/image/ppr_web_button_signup.png" alt="">
+            <span class="btnText">SIGN UP for Alpha Test</span>
+        </div>
+        <div class="copyright">
+            <span class="text">
+                © 2023 Monstronauts Inc. All rights reserved.
+            </span>
+            <a class="hyperlinks" href="https://monstronauts.com/privacy-policy/potion-punch-rivals" target="_blank">Privacy Policy.</a>
+            <a class="hyperlinks" href="https://monstronauts.com/terms-of-service/potion-punch-rivals/" target="_blank">Terms of Service.</a>
+        </div>
     </div>
-    <div class="monstronauts-body">
-        <div id="signup-container">
-            <img class="logo" src="assets/signup/image/ppr_web_logo.png" alt="pp2 logo" >
-            <div id="signup" class="Monstronauts-btn signupBtn hover-highlight" ontouchstart="">
-                <img class="btnImg" src="assets/signup/image/ppr_web_button_signup.png" alt="">
-                <span class="btnText">SIGN UP for Alpha Test</span>
+
+    <div id="forms-container" class="hidden ">
+        <img class="logo" src="assets/signup/image/ppr_web_logo.png" alt="pp2 logo" >
+        <div class="formColumn">
+
+            <div class="form-box">
+                <span class="title">
+                    Join the Alpha!
+                </span>
+                <span class="description">
+                    Be among the first to try out Potion Punch Rivals and help shape the game during its development!
+                    <br>
+                    <br>
+                    Cook, mix, dash, and serve with friends as your favorite shopkeepers in this online multiplayer spin-off of Potion Punch.
+                    <br>
+                    <br>
+                    As an alpha tester, we'll rely on your valuable feedback as we work towards launch.
+                    <br>
+                    <br>
+                    You'll receive direct updates, news, and offers about the game much earlier than everyone else. As a token of our appreciation, you'll also receive commemorative content exclusive to Alpha testers on launch.
+                    <br>
+                    <br>
+    
+                </span>
+                
+                <div id="monstronauts-carousel" class="carousel slide" data-bs-touch="true">
+                    <div class="carousel-container">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="col">
+                                    <div class="card">
+                                        <div class="card-img" index="0">
+                                            <img src="assets/forms/images/ppr_web_screenshot_gameplay.png" class="img-fluid">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="col">
+                                    <div class="card">
+                                        <div class="card-img" index="1">
+                                            <img src="assets/forms/images/ppr_web_screenshot_homescreen.png" class="img-fluid">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item"> 
+                                <div class="col">
+                                    <div class="card">
+                                        <div class="card-img" index="2">
+                                            <img src="assets/forms/images/ppr_web_screenshot_keepers.png" class="img-fluid">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="col">
+                                    <div class="card">
+                                        <div class="card-img" index="3">
+                                            <img src="assets/forms/images/ppr_web_screenshot_result.png" class="img-fluid">
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="col">
+                                    <div class="card">
+                                        <div class="card-img" index="4">
+                                            <img src="assets/forms/images/ppr_web_screenshot_vs.png" class="img-fluid">
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="carousel-control-prev" type="button" data-bs-target="#monstronauts-carousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"><img class="carousel-btn" src="assets/forms/images/ppr_web_caret_yellow.png"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#monstronauts-carousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"><img class="carousel-btn" src="assets/forms/images/ppr_web_caret_yellow.png"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+            <div class="vl"> </div>
+            <div class="form-box">
+                
+                <form id="submitMonstronauts" method="POST" accept-charset="utf-8">
+                    <!-- Hidden form -->
+                    <input type="hidden" name="list" value="zMlDvJAGKm1oioOw2l2orA"/>
+                    <input type="hidden" name="subform" value="yes"/>
+                    
+                    <!-- Name -->
+                    <label for="name">Name</label><br>
+                    <input type="text" name="name" placeholder="Enter your name" required> 
+    
+                    <!-- Email Address -->
+                    <label for="email">Email Address</label><br>
+                    <input id="email" type="email" name="email" placeholder="Enter a valid email address" required>
+    
+                    <!-- Date of Birth -->
+                    <label for="birth">Date of Birth</label><br>
+                    <div class="month-container">
+                        <span class="placeholder"></span>
+                        <input id="month" class="hideMonthPlaceholder" placeholder="MMMM YYYY" type="month" name="birth" min="1923-01" max="2020-12" required>
+                    </div>
+                    
+
+                    <!-- <div class="input-group">
+                        <input type="text" name="birth" class="form-control" id="monthYearInput" placeholder="MM/YYYY">
+                        
+                    </div> -->
+
+                    <!-- <div class="Birth">
+                        <div class="input-group">
+                            <select class="form-select" name="month" id="Month" required>
+                                <option value="" selected>Month</option>
+                                <option value="01">January</option>
+                                <option value="02">February</option>
+                                <option value="03">March</option>
+                                <option value="04">April</option>
+                                <option value="05">May</option>
+                                <option value="06">June</option>
+                                <option value="07">July</option>
+                                <option value="08">August</option>
+                                <option value="09">September</option>
+                                <option value="10">October</option>
+                                <option value="11">November</option>
+                                <option value="12">December</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <select class="form-select" name="year" id="Year" required>
+                                <option value="" selected>Year</option>
+                            </select>
+                        </div>
+                    </div> -->
+                    <!-- Countries -->
+                    <label for="countries">Country</label><br>
+                    <div class="input-group">
+                        <select class="form-select" name="country" id="Countries" required>
+                            <option style="color:gray;" value="" selected>Where are you from?</option >
+                            
+    
+                        </select>
+                    </div>
+                
+                    <!-- Platform -->
+                    <label for="platform">Platform</label><br>
+                    <div class="input-group">
+                        <select class="form-select" name="platform" id="platform" required>
+                            <option style="color:gray;" value="" selected>Device of your choice</option>
+                            <option value="ios">iOS</option>
+                            <option value="android">Android</option>
+                            <option value="pc">PC</option>
+    
+                        </select>
+                    </div><br>
+                    
+                    <!-- Agreement -->
+                    <div class="agreement">
+                        <div class="checkbox-container">
+                            <input id="checkbox" class="checkbox" type="checkbox" name="agreement" required>
+                            <div class="checkmark"></div>
+                        </div>
+                        <!-- <label>
+                            <input class="checkbox" type="checkbox" name="agreement" required>
+                            <img src="assets/forms/images/ppr_web_check.png" alt="Checkmark" id="checkImage" style="display: none;">
+                        </label> -->
+                        <span class="description">
+                            I  accept the <a href="https://monstronauts.com/terms-of-service/potion-punch-rivals/" class="highlight" target="_blank">Terms of Service</a> 
+                            and 
+                            <a href="https://monstronauts.com/privacy-policy/potion-punch-rivals" class="highlight" target="_blank">Privacy Policy</a>, 
+                            and would like to receive the latest news, updates, and other marketing-related content 
+                            about Potion Punch Rivals from the Monstronauts team.
+                        </span>
+                    </div>
+                    <span class="notes"> <span class="highlight">Important Note:</span> 
+                            You may withdraw your consent anytime by clicking the unsubscribe link 
+                            at the bottom of every email we send. We value and respect your personal 
+                            data and privacy. By submitting this form, you agree that we may process 
+                            your information in accordance with these terms.
+                    </span>
+    
+                    <input id="submit" type="submit" class="hidden">
+                    <div class="button-container">
+                        <div id="submitBtn" class="Monstronauts-btn hover-highlight" ontouchstart="">
+                            <img class="btnImg" src="assets/forms/images/ppr_web_button_submit.png" alt="">
+                            <span class="btnText">SUBMIT</span>
+                        </div>
+                    </div>
+                    
+                </form>
             </div>
             <div class="copyright">
-                <span class="text">
-                    © 2023 Monstronauts Inc. All rights reserved.
-                </span>
-                <a class="hyperlinks" href="https://monstronauts.com/privacy-policy/potion-punch-rivals" target="_blank">Privacy Policy.</a>
-                <a class="hyperlinks" href="https://monstronauts.com/terms-of-service/potion-punch-rivals/" target="_blank">Terms of Service.</a>
+                <div class="textcontainer">
+                    <span class="text">
+                        © 2023 Monstronauts Inc. All rights reserved. 
+                    </span>
+                    <a class="hyperlinks" href="https://monstronauts.com/privacy-policy/potion-punch-rivals" target="_blank">Privacy Policy.</a>
+                    <a class="hyperlinks" href="https://monstronauts.com/terms-of-service/potion-punch-rivals/" target="_blank">Terms of Service.</a>
+                </div>
+                
             </div>
         </div>
-    
-        <div id="forms-container" class="hidden overflowHidden">
-            <img class="logo" src="assets/signup/image/ppr_web_logo.png" alt="pp2 logo" >
-            <div class="formColumn">
-
-                <div class="form-box">
-                    <span class="title">
-                        Join the Alpha!
-                    </span>
-                    <span class="description">
-                        Be among the first to try out Potion Punch Rivals and help shape the game during its development!
-                        <br>
-                        <br>
-                        Cook, mix, dash, and serve with friends as your favorite shopkeepers in this online multiplayer spin-off of Potion Punch.
-                        <br>
-                        <br>
-                        As an alpha tester, we'll rely on your valuable feedback as we work towards launch.
-                        <br>
-                        <br>
-                        You'll receive direct updates, news, and offers about the game much earlier than everyone else. As a token of our appreciation, you'll also receive commemorative content exclusive to Alpha testers on launch.
-                        <br>
-                        <br>
         
-                    </span>
-                    
-                    <div id="monstronauts-carousel" class="carousel slide" data-bs-touch="true">
-                        <div class="carousel-container">
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <div class="col">
-                                        <div class="card">
-                                            <div class="card-img" index="0">
-                                                <img src="assets/forms/images/ppr_web_screenshot_gameplay.png" class="img-fluid">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="carousel-item">
-                                    <div class="col">
-                                        <div class="card">
-                                            <div class="card-img" index="1">
-                                                <img src="assets/forms/images/ppr_web_screenshot_homescreen.png" class="img-fluid">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="carousel-item"> 
-                                    <div class="col">
-                                        <div class="card">
-                                            <div class="card-img" index="2">
-                                                <img src="assets/forms/images/ppr_web_screenshot_keepers.png" class="img-fluid">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="carousel-item">
-                                    <div class="col">
-                                        <div class="card">
-                                            <div class="card-img" index="3">
-                                                <img src="assets/forms/images/ppr_web_screenshot_result.png" class="img-fluid">
-                                            </div>
-                                            
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="carousel-item">
-                                    <div class="col">
-                                        <div class="card">
-                                            <div class="card-img" index="4">
-                                                <img src="assets/forms/images/ppr_web_screenshot_vs.png" class="img-fluid">
-                                            </div>
-                                            
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <button class="carousel-control-prev" type="button" data-bs-target="#monstronauts-carousel" data-bs-slide="prev">
-                          <span class="carousel-control-prev-icon" aria-hidden="true"><img class="carousel-btn" src="assets/forms/images/ppr_web_caret_yellow.png"></span>
-                          <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#monstronauts-carousel" data-bs-slide="next">
-                          <span class="carousel-control-next-icon" aria-hidden="true"><img class="carousel-btn" src="assets/forms/images/ppr_web_caret_yellow.png"></span>
-                          <span class="visually-hidden">Next</span>
-                        </button>
-                    </div>
-                </div>
-                <div class="vl"> </div>
-                <div class="form-box">
-                    
-                    <form id="submitMonstronauts" method="POST" accept-charset="utf-8">
-                        <!-- Hidden form -->
-                        <input type="hidden" name="list" value="zMlDvJAGKm1oioOw2l2orA"/>
-                        <input type="hidden" name="subform" value="yes"/>
-                        
-                        <!-- Name -->
-                        <label for="name">Name</label><br>
-                        <input type="text" name="name" placeholder="Enter your name" required> 
-        
-                        <!-- Email Address -->
-                        <label for="email">Email Address</label><br>
-                        <input id="email" type="email" name="email" placeholder="Enter a valid email address" required>
-        
-                        <!-- Date of Birth -->
-                        <label for="birth">Date of Birth</label><br>
-                        <div class="month-container">
-                            <span class="placeholder"></span>
-                            <input id="month" class="hideMonthPlaceholder" placeholder="MMMM YYYY" type="month" name="birth" min="1923-01" max="2020-12" required>
-                        </div>
-                        
-
-                        <!-- <div class="input-group">
-                            <input type="text" name="birth" class="form-control" id="monthYearInput" placeholder="MM/YYYY">
-                            
-                        </div> -->
-
-                        <!-- <div class="Birth">
-                            <div class="input-group">
-                                <select class="form-select" name="month" id="Month" required>
-                                    <option value="" selected>Month</option>
-                                    <option value="01">January</option>
-                                    <option value="02">February</option>
-                                    <option value="03">March</option>
-                                    <option value="04">April</option>
-                                    <option value="05">May</option>
-                                    <option value="06">June</option>
-                                    <option value="07">July</option>
-                                    <option value="08">August</option>
-                                    <option value="09">September</option>
-                                    <option value="10">October</option>
-                                    <option value="11">November</option>
-                                    <option value="12">December</option>
-                                </select>
-                            </div>
-                            <div class="input-group">
-                                <select class="form-select" name="year" id="Year" required>
-                                    <option value="" selected>Year</option>
-                                </select>
-                            </div>
-                        </div> -->
-                        <!-- Countries -->
-                        <label for="countries">Country</label><br>
-                        <div class="input-group">
-                            <select class="form-select" name="country" id="Countries" required>
-                                <option style="color:gray;" value="" selected>Where are you from?</option >
-                                
-        
-                            </select>
-                        </div>
-                    
-                        <!-- Platform -->
-                        <label for="platform">Platform</label><br>
-                        <div class="input-group">
-                            <select class="form-select" name="platform" id="platform" required>
-                                <option style="color:gray;" value="" selected>Device of your choice</option>
-                                <option value="ios">iOS</option>
-                                <option value="android">Android</option>
-                                <option value="pc">PC</option>
-        
-                            </select>
-                        </div><br>
-                        
-                        <!-- Agreement -->
-                        <div class="agreement">
-                            <div class="checkbox-container">
-                                <input id="checkbox" class="checkbox" type="checkbox" name="agreement" required>
-                                <div class="checkmark"></div>
-                            </div>
-                            <!-- <label>
-                                <input class="checkbox" type="checkbox" name="agreement" required>
-                                <img src="assets/forms/images/ppr_web_check.png" alt="Checkmark" id="checkImage" style="display: none;">
-                            </label> -->
-                            <span class="description">
-                                I  accept the <a href="https://monstronauts.com/terms-of-service/potion-punch-rivals/" class="highlight" target="_blank">Terms of Service</a> 
-                                and 
-                                <a href="https://monstronauts.com/privacy-policy/potion-punch-rivals" class="highlight" target="_blank">Privacy Policy</a>, 
-                                and would like to receive the latest news, updates, and other marketing-related content 
-                                about Potion Punch Rivals from the Monstronauts team.
-                            </span>
-                        </div>
-                        <span class="notes"> <span class="highlight">Important Note:</span> 
-                                You may withdraw your consent anytime by clicking the unsubscribe link 
-                                at the bottom of every email we send. We value and respect your personal 
-                                data and privacy. By submitting this form, you agree that we may process 
-                                your information in accordance with these terms.
-                        </span>
-        
-                        <input id="submit" type="submit" class="hidden">
-                        <div class="button-container">
-                            <div id="submitBtn" class="Monstronauts-btn hover-highlight" ontouchstart="">
-                                <img class="btnImg" src="assets/forms/images/ppr_web_button_submit.png" alt="">
-                                <span class="btnText">SUBMIT</span>
-                            </div>
-                        </div>
-                        
-                    </form>
-                </div>
-                <div class="copyright">
-                    <div class="textcontainer">
-                        <span class="text">
-                            © 2023 Monstronauts Inc. All rights reserved. 
-                        </span>
-                        <a class="hyperlinks" href="https://monstronauts.com/privacy-policy/potion-punch-rivals" target="_blank">Privacy Policy.</a>
-                        <a class="hyperlinks" href="https://monstronauts.com/terms-of-service/potion-punch-rivals/" target="_blank">Terms of Service.</a>
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <br>
-        </div>
-    
+        <br>
     </div>
+    
+    <!-- </div> -->
     
 </body>
 </html>
