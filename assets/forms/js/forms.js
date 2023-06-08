@@ -1,4 +1,3 @@
-
 let errorMsg = alertHtml("Connection Problem!","It seems that you are offline or the connection is slow")
 let slowConnection = alertHtml("Ohh no!","It seems that your connection is slow, Please wait!")
 const emailRegex = /^[a-zA-Z0-9._]+@[a-zA-Z0-9]+\.[a-zA-Z]+$/;
@@ -90,7 +89,7 @@ function ajaxSendForm(data){
       contentType: "application/x-www-form-urlencoded",
       dataType: 'json',
       data: {
-        api_key: "8bQQyZdQC8J7O2qad8lz",
+        api_key: "4RqKgUKPaC0Z6OCjl06h",
         list: data.list,
         referrer: "https://potionpunchrivals.com/",
         gdpr: true,

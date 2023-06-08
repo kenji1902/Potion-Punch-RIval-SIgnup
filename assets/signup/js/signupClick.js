@@ -33,4 +33,26 @@ $(document).ready(function () {
         })
         
     });
+    overscroll("#forms-container");
 });
+
+function overscroll(element) {
+    $(element).on("scroll", function() {
+        var scrollTop = $(this).scrollTop();
+        var scrollHeight = $(this).prop("scrollHeight");
+        var offsetHeight = $(this).outerHeight();
+            // console.log(`${scrollTop} + ${offsetHeight} == ${scrollHeight}`)
+        if (scrollTop + offsetHeight >= scrollHeight-10) {
+            $(element).addClass("overscroll");
+        } else {
+            $(element).removeClass("overscroll");
+        }  
+    });
+    let isSafari = (navigator.userAgent.indexOf("Safari") == -1)
+        let iOSAgent = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+        if (iOSAgent && isSafari) {
+            var scrollView = new UIScrollView();
+            scrollView.bounces = false;
+        }
+  }
+  
