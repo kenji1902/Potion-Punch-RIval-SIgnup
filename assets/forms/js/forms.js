@@ -1,4 +1,3 @@
-
 let errorMsg = alertHtml("Connection Problem!","It seems that you are offline or the connection is slow")
 let slowConnection = alertHtml("Ohh no!","It seems that your connection is slow, Please wait!")
 $(document).ready(function () {
@@ -183,7 +182,7 @@ function inputValidity(element,onMismatch,onEmpty=""){
   });
 }
 function showMonthPlaceHolder(){
-  let isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  let isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgentData);
   let placeholderValue = "MMMM YYYY";
   let $input = $('#month');
   let $placeholder = $(".placeholder");

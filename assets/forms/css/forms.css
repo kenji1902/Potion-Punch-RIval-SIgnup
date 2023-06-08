@@ -11,10 +11,15 @@ a:hover{
     /* justify-content: center; */
     flex-direction: column;
     width: 100%;
-    /* height: 100%; */
-    position: relative;
+    height: 100%;
+    overflow-y: auto;
+    position: fixed;
+    
+    /* -webkit-overflow-scrolling: touch; */
     /* border:2px solid red; */
-
+}
+.overscroll{
+    overscroll-behavior: contain;
 }
 #forms-container .logo{
     position: absolute;
@@ -406,6 +411,7 @@ a:hover{
     }
     .formColumn{
         flex-direction: column;
+        padding-top: 6rem !important;
     }
     .carousel-inner{
         width: 45rem;
