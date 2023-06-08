@@ -43,11 +43,16 @@ function overscroll(element) {
         var offsetHeight = $(this).outerHeight();
             // console.log(`${scrollTop} + ${offsetHeight} == ${scrollHeight}`)
         if (scrollTop + offsetHeight >= scrollHeight-10) {
-            console.log("End of scroll");
             $(element).addClass("overscroll");
         } else {
             $(element).removeClass("overscroll");
-        }
+        }  
     });
+    let isSafari = (navigator.userAgent.indexOf("Safari") == -1)
+        let iOSAgent = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+        if (iOSAgent && isSafari) {
+            var scrollView = new UIScrollView();
+            scrollView.bounces = false;
+        }
   }
   

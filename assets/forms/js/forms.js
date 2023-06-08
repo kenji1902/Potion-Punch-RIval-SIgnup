@@ -89,7 +89,7 @@ function ajaxSendForm(data){
       contentType: "application/x-www-form-urlencoded",
       dataType: 'json',
       data: {
-        api_key: "8bQQyZdQC8J7O2qad8lz",
+        api_key: "4RqKgUKPaC0Z6OCjl06h",
         list: data.list,
         referrer: "https://potionpunchrivals.com/",
         gdpr: true,
@@ -196,7 +196,7 @@ function validateEmail(email) {
   return emailRegex.test(email);
 }
 function showMonthPlaceHolder(){
-  let isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgentData);
+  let isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
   let placeholderValue = "MMMM YYYY";
   let $input = $('#month');
   let $placeholder = $(".placeholder");
