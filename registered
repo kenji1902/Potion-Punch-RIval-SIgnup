@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Potion Punch Rivals</title>
 
@@ -109,17 +110,7 @@
     </div>
 
     <div class="monstronauts-body">
-        <div id="signup-container">
-            <img class="logo" src="assets/signup/image/ppr_web_logo.png" alt="pp2 logo" >
-
-            <div class="copyright">
-                <span class="text">
-                    © 2023 Monstronauts Inc. All rights reserved.
-                </span>
-                <a class="hyperlinks" href="https://monstronauts.com/privacy-policy/potion-punch-rivals">Privacy Policy.</a>
-                    <a class="hyperlinks" href="https://monstronauts.com/terms-of-service/potion-punch-rivals/">Terms of Service.</a>
-            </div>
-        </div>
+        
 
         <div id="registered-container" class="">
             <div class="registered-box">
@@ -138,6 +129,17 @@
                 </span>
             </div>
             
+        </div>
+        <div id="signup-container">
+            <img class="logo" src="assets/signup/image/ppr_web_logo.png" alt="pp2 logo" >
+
+            <div class="copyright">
+                <span class="text">
+                    © 2023 Monstronauts Inc. All rights reserved.
+                </span>
+                <a class="hyperlinks" href="https://monstronauts.com/privacy-policy/potion-punch-rivals" target="_blank">Privacy Policy.</a>
+                <a class="hyperlinks" href="https://monstronauts.com/terms-of-service/potion-punch-rivals/" target="_blank">Terms of Service.</a>
+            </div>
         </div>
     </div>
 

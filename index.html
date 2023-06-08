@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Potion Punch Rivals</title>
 
@@ -102,6 +103,9 @@
     <meta property="twitter:description" content="Join the Alpha! Cook, mix, dash, and serve in this cozy online multiplayer cooking battle arena.">
     <meta property="twitter:image" content="https://potionpunchrivals.com/assets/static/image/meta/ppr_meta_image.png">
 
+    <!-- Pre load Images -->
+    <link rel="preload" as="image" href="assets/forms/images/ppr_web_dropdown.png">
+    <link rel="preload" as="image" href="assets/forms/images/ppr_web_check.png">
 </head>
 <body>
     <!-- <picture class="background"></picture> -->
@@ -111,7 +115,7 @@
     <div class="monstronauts-body">
         <div id="signup-container">
             <img class="logo" src="assets/signup/image/ppr_web_logo.png" alt="pp2 logo" >
-            <div id="signup" class="signupBtn">
+            <div id="signup" class="Monstronauts-btn signupBtn hover-highlight" ontouchstart="">
                 <img class="btnImg" src="assets/signup/image/ppr_web_button_signup.png" alt="">
                 <span class="btnText">SIGN UP for Alpha Test</span>
             </div>
@@ -119,8 +123,8 @@
                 <span class="text">
                     © 2023 Monstronauts Inc. All rights reserved.
                 </span>
-                <a class="hyperlinks" href="https://monstronauts.com/privacy-policy/potion-punch-rivals">Privacy Policy.</a>
-                <a class="hyperlinks" href="https://monstronauts.com/terms-of-service/potion-punch-rivals/">Terms of Service.</a>
+                <a class="hyperlinks" href="https://monstronauts.com/privacy-policy/potion-punch-rivals" target="_blank">Privacy Policy.</a>
+                <a class="hyperlinks" href="https://monstronauts.com/terms-of-service/potion-punch-rivals/" target="_blank">Terms of Service.</a>
             </div>
         </div>
     
@@ -147,14 +151,15 @@
                         <br>
         
                     </span>
-                    <div id="monstronauts-carousel" class="carousel slide">
+                    
+                    <div id="monstronauts-carousel" class="carousel slide" data-bs-touch="true">
                         <div class="carousel-container">
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
                                     <div class="col">
                                         <div class="card">
                                             <div class="card-img" index="0">
-                                                <img id="img0" src="assets/forms/images/ppr_web_screenshot_gameplay.png" class="img-fluid">
+                                                <img src="assets/forms/images/ppr_web_screenshot_gameplay.png" class="img-fluid">
                                             </div>
                                         </div>
                                     </div>
@@ -163,7 +168,7 @@
                                     <div class="col">
                                         <div class="card">
                                             <div class="card-img" index="1">
-                                                <img id="img1" src="assets/forms/images/ppr_web_screenshot_homescreen.png" class="img-fluid">
+                                                <img src="assets/forms/images/ppr_web_screenshot_homescreen.png" class="img-fluid">
                                             </div>
                                         </div>
                                     </div>
@@ -172,7 +177,7 @@
                                     <div class="col">
                                         <div class="card">
                                             <div class="card-img" index="2">
-                                                <img id="img2" src="assets/forms/images/ppr_web_screenshot_keepers.png" class="img-fluid">
+                                                <img src="assets/forms/images/ppr_web_screenshot_keepers.png" class="img-fluid">
                                             </div>
                                         </div>
                                     </div>
@@ -181,7 +186,17 @@
                                     <div class="col">
                                         <div class="card">
                                             <div class="card-img" index="3">
-                                                <img id="img3" src="assets/forms/images/ppr_web_screenshot_matchmaking .png" class="img-fluid">
+                                                <img src="assets/forms/images/ppr_web_screenshot_result.png" class="img-fluid">
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <div class="col">
+                                        <div class="card">
+                                            <div class="card-img" index="4">
+                                                <img src="assets/forms/images/ppr_web_screenshot_vs.png" class="img-fluid">
                                             </div>
                                             
                                         </div>
@@ -277,7 +292,6 @@
                         
                         <!-- Agreement -->
                         <div class="agreement">
-                            
                             <div class="checkbox-container">
                                 <input id="checkbox" class="checkbox" type="checkbox" name="agreement" required>
                                 <div class="checkmark"></div>
@@ -287,9 +301,9 @@
                                 <img src="assets/forms/images/ppr_web_check.png" alt="Checkmark" id="checkImage" style="display: none;">
                             </label> -->
                             <span class="description">
-                                I  accept the <a href="https://monstronauts.com/terms-of-service/potion-punch-rivals/">Terms of Service</a> 
+                                I  accept the <a href="https://monstronauts.com/terms-of-service/potion-punch-rivals/" class="highlight" target="_blank">Terms of Service</a> 
                                 and 
-                                <a href="https://monstronauts.com/privacy-policy/potion-punch-rivals">Privacy Policy</a>, 
+                                <a href="https://monstronauts.com/privacy-policy/potion-punch-rivals" class="highlight" target="_blank">Privacy Policy</a>, 
                                 and would like to receive the latest news, updates, and other marketing-related content 
                                 about Potion Punch Rivals from the Monstronauts team.
                             </span>
@@ -303,7 +317,7 @@
         
                         <input id="submit" type="submit" class="hidden">
                         <div class="button-container">
-                            <div id="submitBtn">
+                            <div id="submitBtn" class="Monstronauts-btn hover-highlight" ontouchstart="">
                                 <img class="btnImg" src="assets/forms/images/ppr_web_button_submit.png" alt="">
                                 <span class="btnText">SUBMIT</span>
                             </div>
@@ -314,10 +328,10 @@
                 <div class="copyright">
                     <div class="textcontainer">
                         <span class="text">
-                            © 2023 Monstronauts Inc. All rights reserved. &nbsp
+                            © 2023 Monstronauts Inc. All rights reserved. 
                         </span>
-                        <a class="hyperlinks" href="https://monstronauts.com/privacy-policy/potion-punch-rivals">Privacy Policy.</a>
-                        <a class="hyperlinks" href="https://monstronauts.com/terms-of-service/potion-punch-rivals/">Terms of Service.</a>
+                        <a class="hyperlinks" href="https://monstronauts.com/privacy-policy/potion-punch-rivals" target="_blank">Privacy Policy.</a>
+                        <a class="hyperlinks" href="https://monstronauts.com/terms-of-service/potion-punch-rivals/" target="_blank">Terms of Service.</a>
                     </div>
                     
                 </div>

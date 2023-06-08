@@ -25,6 +25,8 @@ a:hover{
     position: absolute;
     top: 2px;
     z-index: 1;
+    max-width: 100%;
+    max-height: 100%;
 }
 #forms-container .formColumn{
     display: flex;
@@ -48,6 +50,9 @@ a:hover{
     width: 45%;
     /* height: fit-content; */
     padding: 0 2rem 0rem 2rem;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
     user-select: none;
     /* padding-top: 8rem; */
     /* top: 8rem; */
@@ -61,6 +66,7 @@ a:hover{
     overflow: hidden;
     display: flex;
     justify-content: center;
+    margin-bottom: 2rem;
     /* left: -1rem; */
     /* height: 15rem; */
 }
@@ -71,14 +77,17 @@ a:hover{
 }
 .carousel-inner{
     /* position: absolute; */
-    width: 40rem;    
+    width: 35rem;    
 }
 .carousel .card{
     position: relative;
-    height: 14.1rem !important;
-    margin-right: 1rem;
-    height: 15rem;
     width: 8rem;
+    height: 15rem;
+    margin-right: 1rem;
+}
+.carousel .card-img{
+    position: relative;
+    height: 100%;   
 }
 .carousel img{
     position: relative;
@@ -89,6 +98,13 @@ a:hover{
     -moz-transition: transform 0.2s ease, opacity .5s ease-out;
     -o-transition: transform 0.2s ease, opacity .5s ease-out;
     transition: transform 0.2s ease, opacity .5s ease-out;
+}
+.f-button svg, .fancybox__infobar{
+    color: var(--Monstronauts-tertiary);
+}
+.f-button.is-next svg, .f-button.is-prev svg{
+    width: 3rem;
+    height: 3rem;
 }
 
 /* @media (max-width: 767px) {
@@ -158,16 +174,15 @@ a:hover{
     padding: 0.5rem;
     width: 100%;
     -webkit-min-logical-width:calc(100% - 18px);
-    border-radius: 10px;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
+    border-radius: 10px;
 }
 .month-container{
     display: flex;
     align-items: center;
     position: relative;
     width: 100%;
-    height: fit-content;
 }
 
 .month-container .placeholder{
@@ -185,6 +200,9 @@ a:hover{
 .hideMonthPlaceholder:in-range::-webkit-datetime-edit-month-field,  
 .hideMonthPlaceholder:in-range::-webkit-datetime-edit-text { 	
     color: transparent; 
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
     user-select: none;
     background-color: transparent;
 }
@@ -252,44 +270,6 @@ a:hover{
     background-image: url(../../forms/images/ppr_web_check.png);
   }
  
-
-/* .checkbox:before {
-    position: relative;
-    display: block;
-    width: 2rem !important;
-    height: 2rem !important;
-    border: 1px solid var(--Monstronauts-primary);
-    content: "";
-    background: var(--Monstronauts-secondary);
-}
-.checkbox:after {
-    position: relative;
-    display: block;
-    left: 0px;
-    top: -2rem;
-    width: 2rem !important;
-    height: 2rem !important;
-    border-width: 1px;
-    border-style: solid;
-    border-color: var(--Monstronauts-primary);
-    content: "";
-     background-image: linear-gradient(135deg, #B1B6BE 0%, #FFF 100%); 
-    background-repeat: no-repeat;
-    background-position: center;
-}
-.checkbox:checked:after {
-    background-image: url(../../forms/images/ppr_web_check.png);
-}
-
-.checkbox{
-    display: inline-block;
-    width: 2rem !important;
-    height: 2rem !important;
-}
-
-#checkImage{
-    position: absolute;
-} */
 .birth .form-box .input-group{
     width: 50%;
 }
@@ -307,6 +287,7 @@ a:hover{
     gap: 1rem;
 }
 .form-box .agreement .description{
+    text-align: left;
     width: 90%;
     color: var(--font-color-primary);
     font-size: 10pt;
@@ -332,8 +313,14 @@ a:hover{
     align-items: center;
     cursor: pointer;
     position: relative;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
     user-select: none;
     width: 50%;
+}
+.Monstronauts-btn:active:not(.grayscale-element){
+    filter: brightness(80%) saturate(70%);
 }
 #submitBtn .btnImg{
     position: relative;
@@ -369,6 +356,9 @@ a:hover{
     margin-top: 3rem;
     bottom: -2rem;
     position: absolute;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
     user-select: none;
     width: 100%;
 }
@@ -398,7 +388,9 @@ a:hover{
 .grayscale-element {
     filter: grayscale(100%);
 }
-
+.hover-highlight:hover{
+    filter: brightness(110%) saturate(140%);
+}
 
 @media screen and (max-width: 1300px) {
     #forms-container .formColumn{
@@ -409,12 +401,15 @@ a:hover{
     #forms-container .form-box{
         width: 100%;
     }
+    .carousel{
+        margin-bottom: 0rem;
+    }
     .formColumn{
         flex-direction: column;
         padding-top: 6rem !important;
     }
     .carousel-inner{
-        width: 45rem;
+        width: 40rem;
     }
     .vl{
         display: none;
@@ -424,17 +419,30 @@ a:hover{
     #forms-container .formColumn{
         max-width: 85vw;
     }
+    .carousel-inner{
+        width: 52rem;
+    }
+    .carousel{
+        height: 22rem;
+        /* width: calc(100% + 4rem); */
+    }
+    .carousel .card{
+        height: 22rem;
+        width: 12rem;
+        margin-right: 0.5rem;
+    }
 }
 @media screen and (max-width: 600px) {
     #forms-container .form-box{
         padding: 0 2rem 0rem 2rem; 
         /* padding-top: 8rem; */
     }
-    .carousel{
-        width: calc(100% + 4rem);
-    }
+    
     #forms-container .formColumn{
         max-width: 95vw;
+    }
+    .carousel{
+        width: calc(100% + 16vw);;
     }
     .form-box .agreement .description{
         font-size: 2.7vw;
